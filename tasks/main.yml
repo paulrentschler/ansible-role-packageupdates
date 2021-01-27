@@ -1,2 +1,27 @@
 ---
-# tasks file for packageupdates
+# Update installed packages and setup things to keep them updated
+
+- name: "updatepackages: update installed packages (RedHat)"
+  yum:
+    name: *
+    state: latest
+  register: pkg_results
+  become: yes
+  when: "ansible_os_family == 'RedHat' and not packageupdates_skip_updates"
+
+- name: "updatepackages: update installed packages (Debian)"
+  apt:
+    update_cache: yes
+    upgrade: dist
+  register: pkg_results
+  become: yes
+  when: "ansible_os_family == 'Debian' and not packageupdates_skip_updates"
+
+- name: "updatepackages: setup cron job to check for updates daily"
+  ansible.builtin.template:
+    src: updatepackages.j2
+    dest: /etc/cron.d/updatepackages
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
