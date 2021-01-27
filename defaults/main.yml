@@ -1,2 +1,8 @@
 ---
-# defaults file for packageupdates
+# defaults for package updates related variables
+#
+
+# provide a way to skip updates on repetitive runs
+# (default to skipping since package updates can be time consuming)
+packageupdates_skip_updates: yes
+
