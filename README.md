@@ -1,5 +1,5 @@
-packageupdates
-==============
+paulrentschler.packageupdates
+=============================
 
 Ansible role to manage package updates.
 

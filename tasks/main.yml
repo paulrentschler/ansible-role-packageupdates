@@ -1,7 +1,7 @@
 ---
 # Update installed packages and setup things to keep them updated
 
-- name: "updatepackages: update installed packages (RedHat)"
+- name: "update installed packages (RedHat)"
   yum:
     name: "*"
     state: latest
@@ -9,7 +9,7 @@
   become: yes
   when: "ansible_os_family == 'RedHat' and not packageupdates_skip_updates|bool"
 
-- name: "updatepackages: update installed packages (Debian)"
+- name: "update installed packages (Debian)"
   apt:
     update_cache: yes
     upgrade: dist
@@ -17,7 +17,7 @@
   become: yes
   when: "ansible_os_family == 'Debian' and not packageupdates_skip_updates|bool"
 
-- name: "updatepackages: setup cron job to check for updates daily"
+- name: "setup cron job to check for updates daily"
   ansible.builtin.template:
     src: updatepackages.j2
     dest: /etc/cron.d/updatepackages
