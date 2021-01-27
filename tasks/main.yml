@@ -3,11 +3,11 @@
 
 - name: "updatepackages: update installed packages (RedHat)"
   yum:
-    name: *
+    name: "*"
     state: latest
   register: pkg_results
   become: yes
-  when: "ansible_os_family == 'RedHat' and not packageupdates_skip_updates"
+  when: "ansible_os_family == 'RedHat' and not packageupdates_skip_updates|bool"
 
 - name: "updatepackages: update installed packages (Debian)"
   apt:
@@ -15,7 +15,7 @@
     upgrade: dist
   register: pkg_results
   become: yes
-  when: "ansible_os_family == 'Debian' and not packageupdates_skip_updates"
+  when: "ansible_os_family == 'Debian' and not packageupdates_skip_updates|bool"
 
 - name: "updatepackages: setup cron job to check for updates daily"
   ansible.builtin.template:
