@@ -1,6 +1,8 @@
 paulrentschler.packageupdates
 =============================
 
+[![MIT licensed][mit-badge]][mit-link]
+
 Ansible role to manage package updates.
 
 Requirements
@@ -52,10 +54,14 @@ Setup the daily check and update the packages
 License
 -------
 
-MIT
+[MIT][mit-link]
 
 
 Author Information
 ------------------
 
 Created by Paul Rentschler in 2021.
+
+
+[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[mit-link]: https://github.com/paulrentschler/ansible-role-packageupdates/blob/master/LICENSE
