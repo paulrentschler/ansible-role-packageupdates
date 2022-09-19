@@ -17,7 +17,7 @@ MAILTO=root
 # *  *  *  *  *  user-name  command to be executed
 {% if ansible_os_family == 'Debian' %}
  00  5  *  *  *  root       /usr/bin/apt-get update -qq
- 30  5  *  *  *  root       /usr/bin/apt-get dist-upgrade -s
+# 30  5  *  *  *  root       /usr/bin/apt-get dist-upgrade -s
 {% elif ansible_os_family == 'RedHat' %}
  30  5  *  *  *  root       /usr/bin/yum check-update
 {% endif %}
